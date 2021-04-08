@@ -254,7 +254,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.suit.tile)
+    awful.tag({ "web", "dev", "comm", "ext" }, s, awful.layout.suit.tile)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -372,6 +372,7 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Shift" }, "f", function () awful.spawn("firefox") end, {description = "open firefox", group = "launcher"}),
     awful.key({ modkey, "Shift" }, "g", function () awful.spawn("chromium") end, {description = "open chromium", group = "launcher"}),
+    awful.key({ modkey, "Shift" }, "b", function () awful.spawn("subl") end, {description = "open sublime text", group = "launcher"}),
     awful.key({ modkey, "Shift" }, "=", function() os.execute("pactl set-sink-volume 0 +5%") end),
 awful.key({ modkey, "Shift" }, "-", function() os.execute("pactl set-sink-volume 0 -5%") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
@@ -662,4 +663,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- {{ ALL CUSTOM GARBAGE }} --
+client.connect_signal("focus", function(c) c.border_color = "#18dcff" end)
 
